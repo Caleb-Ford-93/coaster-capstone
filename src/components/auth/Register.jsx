@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import "./Login.css";
 import { createUser, getUserByEmail } from "../../services/userService";
 
-export const Register = (props) => {
+export const Register = () => {
   const [customer, setCustomer] = useState({
     email: "",
     fullName: "",

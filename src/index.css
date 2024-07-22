@@ -10,15 +10,15 @@ font-family: "Roboto", sans-serif;
 /* COLOR PALETTE */
 /* Feel free to change these values and create your own color palette! https://coolors.co/ is a great resource */
 :root {
-  --primary: #ffb400;
-  --secondary: #00a6ed;
+  --primary: #03abcd;
+  --secondary: #017bab;
   --info: #7fb800;
   --warning: #f6511d;
   --white: #ffffff;
   --offWhite: #f2f2f3;
-  --dark: #3b3b3b;
+  --dark: #0c0e18;
   --outline: #c3c0c0;
-  --appBackground: #dddade;
+  --appBackground: #017bab;
 }
 
 /* GLOBAL STYLES */
@@ -31,7 +31,7 @@ textarea {
 }
 
 body {
-  background-color: var(--appBackground);
+  background-color: var(--primary);
   margin: 0;
 }
 
