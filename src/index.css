@@ -18,7 +18,7 @@ font-family: "Roboto", sans-serif;
   --offWhite: #f2f2f3;
   --dark: #0c0e18;
   --outline: #c3c0c0;
-  --appBackground: #017bab;
+  --appBackground: #425563;
 }
 
 /* GLOBAL STYLES */
@@ -31,7 +31,7 @@ textarea {
 }
 
 body {
-  background-color: var(--primary);
+  background-color: var(--appBackground);
   margin: 0;
 }
 
