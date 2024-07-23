@@ -3,6 +3,7 @@ import { NavBar } from "../components/nav/NavBar";
 import { Welcome } from "../components/welcome/Welcome";
 import { MyRides } from "../components/rides/MyRides";
 import { useEffect, useState } from "react";
+import { NewRideForm } from "../components/forms/NewRideForm";
 
 export const ApplicationViews = () => {
   const [currentUser, setCurrentUser] = useState("");
@@ -28,6 +29,10 @@ export const ApplicationViews = () => {
         <Route
           path="/myRides"
           element={<MyRides currentUser={currentUser} />}
+        />
+        <Route
+          path="/newRide"
+          element={<NewRideForm currentUser={currentUser} />}
         />
       </Route>
     </Routes>

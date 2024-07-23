@@ -3,3 +3,6 @@ export const getParkById = (id) => {
     res.json()
   );
 };
+export const getParks = () => {
+  return fetch(`http://localhost:8088/parks`).then((res) => res.json());
+};
