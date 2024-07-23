@@ -5,7 +5,7 @@ import "./Login.css";
 import { getUserByEmail } from "../../services/userService";
 
 export const Login = () => {
-  const [email, set] = useState("hpassfield7@netvibes.com");
+  const [email, set] = useState("caleb.ford.sto@gmail.com");
   const navigate = useNavigate();
 
   const handleLogin = (e) => {
@@ -18,6 +18,7 @@ export const Login = () => {
           "coaster_user",
           JSON.stringify({
             id: user.id,
+            name: user.fullName,
           })
         );
 
@@ -57,7 +58,7 @@ export const Login = () => {
         </form>
       </section>
       <section>
-        <Link to="/register">Not a member yet?</Link>
+        <Link to="/register">Create Account</Link>
       </section>
     </main>
   );
