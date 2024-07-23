@@ -1,0 +1,38 @@
+.ride-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.ride-card {
+  background-color: var(--secondary);
+  display: flex;
+  margin: auto;
+  padding: 1rem;
+  border-radius: 8px;
+  margin-top: 1rem;
+}
+.ride-img {
+  max-width: 250px;
+  border-radius: 8px;
+  margin-right: 2rem;
+}
+.ride-buttons {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 1rem;
+}
+.ride-info {
+  background-color: var(--outline);
+  padding: 1rem;
+  font-weight: 600;
+  border-radius: 8px;
+  width: 15rem;
+}
+.ride-options {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.ride-name {
+  text-decoration: underline;
+}
