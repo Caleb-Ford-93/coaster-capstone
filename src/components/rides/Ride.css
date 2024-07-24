@@ -10,9 +10,12 @@
   padding: 1rem;
   border-radius: 8px;
   margin-top: 1rem;
+  max-height: 300px;
+  flex-shrink: 1;
 }
 .ride-img {
-  max-width: 250px;
+  max-width: 300px;
+  max-height: 300px;
   border-radius: 8px;
   margin-right: 2rem;
 }
@@ -22,6 +25,8 @@
   margin-top: 1rem;
 }
 .ride-info {
+  display: flex;
+  flex-direction: column;
   background-color: var(--outline);
   padding: 1rem;
   font-weight: 600;
