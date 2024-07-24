@@ -1,16 +1,17 @@
 import { useEffect, useState } from "react";
-import { getRidesByUserId } from "../../services/rideService";
-import { Ride } from "./Ride";
-import "./Ride.css";
 import { RideFilterBar } from "../filter/RideFilterBar";
+import { Ride } from "./Ride";
+import { getRides } from "../../services/rideService";
 
-export const MyRides = ({ currentUser }) => {
+export const DiscoverRides = ({ currentUser }) => {
   const [allRides, setAllRides] = useState([]);
   const [filteredRides, setFilteredRides] = useState([]);
   const [searchInput, setSearchInput] = useState("");
 
-  const getAndSetCurrentUserRides = () => {
-    getRidesByUserId(currentUser.id).then((rides) => setAllRides(rides));
+  const getAndSetAllRides = () => {
+    getRides().then((rides) => {
+      setAllRides(rides);
+    });
   };
   const filterRidesBySearchInput = () => {
     if (searchInput) {
@@ -22,11 +23,9 @@ export const MyRides = ({ currentUser }) => {
       setFilteredRides(allRides);
     }
   };
-
   useEffect(() => {
-    getAndSetCurrentUserRides();
-  }, [currentUser]);
-
+    getAndSetAllRides();
+  }, []);
   useEffect(() => {
     setFilteredRides(allRides);
   }, [allRides]);
@@ -45,8 +44,7 @@ export const MyRides = ({ currentUser }) => {
               key={ride.id}
               currentUser={currentUser}
               ride={ride}
-              getAndSetAllRides={getAndSetCurrentUserRides}
-              searchInput={searchInput}
+              getAndSetAllRides={getAndSetAllRides}
             />
           );
         })}

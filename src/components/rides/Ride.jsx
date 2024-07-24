@@ -1,13 +1,25 @@
 import { useEffect, useState } from "react";
 import { getParkById } from "../../services/parkService";
 import "./Ride.css";
+import { deleteRide } from "../../services/rideService";
 
-export const Ride = ({ ride }) => {
+export const Ride = ({
+  ride,
+  // getAndSetCurrentUserRides,
+  currentUser,
+  getAndSetAllRides,
+}) => {
   const [rideLocation, setRideLocation] = useState({});
 
   const getAndSetRideLocation = (parkId) => {
     getParkById(parkId).then((park) => {
       setRideLocation(park);
+    });
+  };
+
+  const handleDelete = (id) => {
+    deleteRide(id).then(() => {
+      getAndSetAllRides();
     });
   };
 
@@ -34,10 +46,21 @@ export const Ride = ({ ride }) => {
           {ride.frontRow ? <span>Front Row ✅</span> : <span>Front Row</span>}
           {ride.backRow ? <span>Back Row ✅</span> : <span>Back Row</span>}
         </div>
-        <div className="ride-buttons">
-          <button className="edit-btn btn btn-info">Edit</button>
-          <button className="delete-btn btn btn-warning">Delete</button>
-        </div>
+        {ride.userId === currentUser.id ? (
+          <div className="ride-buttons">
+            <button className="edit-btn btn btn-info">Edit</button>
+            <button
+              className="delete-btn btn btn-warning"
+              onClick={() => {
+                handleDelete(ride.id);
+              }}
+            >
+              Delete
+            </button>
+          </div>
+        ) : (
+          <div className="user-name">{ride.user.fullName}</div>
+        )}
       </div>
     </section>
   );

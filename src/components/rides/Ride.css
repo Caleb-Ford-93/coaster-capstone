@@ -12,10 +12,12 @@
   margin-top: 1rem;
   max-height: 300px;
   flex-shrink: 1;
+  box-shadow: 3px 3px var(--dark);
+  border: 0.5px solid var(--dark);
 }
 .ride-img {
-  max-width: 300px;
-  max-height: 300px;
+  width: 300px;
+  height: 290px;
   border-radius: 8px;
   margin-right: 2rem;
 }
@@ -36,8 +38,12 @@
 .ride-options {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-evenly;
 }
 .ride-name {
   text-decoration: underline;
+}
+.user-name {
+  align-self: flex-end;
+  margin-top: 2rem;
 }

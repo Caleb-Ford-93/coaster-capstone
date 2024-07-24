@@ -61,91 +61,104 @@ export const NewRideForm = ({ currentUser }) => {
   return (
     <form className="new-ride-form">
       <fieldset className="park-choice">
-        <label>Theme Park: </label>
-        <select
-          className="form-control"
-          defaultValue={"default"}
-          onChange={(e) => {
-            handleParkSelection(e.target.value);
-          }}
-        >
-          <option value={"default"} disabled>
-            Chose a Park
-          </option>
-          {parks.map((park) => (
-            <option key={park.id} value={park.id}>
-              {park.name}
+        <label>
+          Theme Park:
+          <select
+            className="form-control"
+            defaultValue={"default"}
+            name="themeParkSelect"
+            onChange={(e) => {
+              handleParkSelection(e.target.value);
+            }}
+          >
+            <option value={"default"} disabled>
+              Chose a Park
             </option>
-          ))}
-        </select>
+            {parks.map((park) => (
+              <option key={park.id} value={park.id}>
+                {park.name}
+              </option>
+            ))}
+          </select>
+        </label>
       </fieldset>
       <fieldset className="coaster-choice">
-        <label>Coaster: </label>
-        <select
-          className="form-control"
-          defaultValue={"default"}
-          id="coasterId"
-          onChange={(e) => {
-            handleChange(e.target.id, parseInt(e.target.value));
-          }}
-        >
-          <option value={"default"} disabled>
-            Chose a Coaster
-          </option>
-          {coastersByPark.length > 0
-            ? coastersByPark.map((coaster) => (
-                <option key={coaster.id} value={coaster.id}>
-                  {coaster.name}
-                </option>
-              ))
-            : coasters.map((coaster) => (
-                <option key={coaster.id} value={coaster.id}>
-                  {coaster.name}
-                </option>
-              ))}
-        </select>
+        <label>
+          Coaster:
+          <select
+            className="form-control"
+            defaultValue={"default"}
+            id="coasterId"
+            onChange={(e) => {
+              handleChange(e.target.id, parseInt(e.target.value));
+            }}
+          >
+            <option value={"default"} disabled>
+              Chose a Coaster
+            </option>
+            {coastersByPark.length > 0
+              ? coastersByPark.map((coaster) => (
+                  <option key={coaster.id} value={coaster.id}>
+                    {coaster.name}
+                  </option>
+                ))
+              : coasters.map((coaster) => (
+                  <option key={coaster.id} value={coaster.id}>
+                    {coaster.name}
+                  </option>
+                ))}
+          </select>
+        </label>
       </fieldset>
       <fieldset className="ride-params">
-        <legend>Select all that apply</legend>
+        <legend>Select all that apply: </legend>
         <div>
-          <label>Day Ride</label>
-          <input
-            type="checkbox"
-            id="dayRide"
-            onChange={(e) => {
-              handleChange(e.target.id, e.target.checked);
-            }}
-          />
+          <label>
+            Day Ride
+            <input
+              type="checkbox"
+              id="dayRide"
+              onChange={(e) => {
+                handleChange(e.target.id, e.target.checked);
+              }}
+            />
+          </label>
         </div>
         <div>
-          <label>Night Ride</label>
-          <input
-            type="checkbox"
-            id="nightRide"
-            onChange={(e) => {
-              handleChange(e.target.id, e.target.checked);
-            }}
-          />
+          <label>
+            Night Ride
+            <input
+              type="checkbox"
+              id="nightRide"
+              onChange={(e) => {
+                handleChange(e.target.id, e.target.checked);
+              }}
+            />
+          </label>
         </div>
         <div>
-          <label>Front Row</label>
-          <input
-            type="checkbox"
-            id="frontRow"
-            onChange={(e) => {
-              handleChange(e.target.id, e.target.checked);
-            }}
-          />
+          <label>
+            Front Row
+            <input
+              type="checkbox"
+              id="frontRow"
+              onChange={(e) => {
+                handleChange(e.target.id, e.target.checked);
+              }}
+            />
+          </label>
         </div>
         <div>
-          <label>Back Row</label>
-          <input
-            type="checkbox"
-            id="backRow"
-            onChange={(e) => {
-              handleChange(e.target.id, e.target.checked);
-            }}
-          />
+          <label>
+            Back Row
+            <input
+              type="checkbox"
+              id="backRow"
+              onChange={(e) => {
+                handleChange(e.target.id, e.target.checked);
+              }}
+            />
+          </label>
         </div>
       </fieldset>
       <fieldset className="submit-button">

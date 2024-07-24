@@ -6,6 +6,7 @@ export const RideFilterBar = ({ setSearchInput }) => {
   const handleSearch = () => {
     setSearchInput(searchTerm.toLowerCase());
   };
+
   return (
     <div className="search-bar">
       <label htmlFor="searchInput">Search Rides: </label>

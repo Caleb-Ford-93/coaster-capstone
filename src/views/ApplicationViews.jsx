@@ -4,6 +4,7 @@ import { Welcome } from "../components/welcome/Welcome";
 import { MyRides } from "../components/rides/MyRides";
 import { useEffect, useState } from "react";
 import { NewRideForm } from "../components/forms/NewRideForm";
+import { DiscoverRides } from "../components/rides/DiscoverRides";
 
 export const ApplicationViews = () => {
   const [currentUser, setCurrentUser] = useState("");
@@ -29,6 +30,10 @@ export const ApplicationViews = () => {
         <Route
           path="/myRides"
           element={<MyRides currentUser={currentUser} />}
+        />
+        <Route
+          path="/discover"
+          element={<DiscoverRides currentUser={currentUser} />}
         />
         <Route
           path="/newRide"
