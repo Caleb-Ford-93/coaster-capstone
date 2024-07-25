@@ -47,7 +47,7 @@ export const NewRideForm = ({ currentUser }) => {
     }
   };
 
-  useEffect(() => {}, [coastersByPark]);
+  // useEffect(() => {}, [coastersByPark]);
 
   useEffect(() => {
     getParks().then((parks) => {
@@ -95,9 +95,7 @@ export const NewRideForm = ({ currentUser }) => {
               handleChange(e.target.id, parseInt(e.target.value));
             }}
           >
-            <option value={"default"} disabled>
-              Chose a Coaster
-            </option>
+            <option value={"default"}>Chose a Coaster</option>
             {coastersByPark.length > 0
               ? coastersByPark.map((coaster) => (
                   <option key={coaster.id} value={coaster.id}>
