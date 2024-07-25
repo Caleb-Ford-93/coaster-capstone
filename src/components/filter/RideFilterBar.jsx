@@ -1,5 +1,5 @@
 import { useState } from "react";
-
+import "./FilterBar.css";
 export const RideFilterBar = ({ setSearchInput }) => {
   const [searchTerm, setSearchTerm] = useState("");
 
@@ -9,17 +9,20 @@ export const RideFilterBar = ({ setSearchInput }) => {
 
   return (
     <div className="search-bar">
-      <label htmlFor="searchInput">Search Rides: </label>
-      <input
-        type="search"
-        placeholder="Search by Coaster Name"
-        id="searchInput"
-        onChange={(e) => {
-          setSearchTerm(e.target.value);
-        }}
-      />
-      <button className="btn-info" onClick={handleSearch}>
-        Go
+      <label>
+        Search Rides:
+        <input
+          type="search"
+          className="search-input"
+          placeholder="Search by Coaster"
+          id="searchInput"
+          onChange={(e) => {
+            setSearchTerm(e.target.value);
+          }}
+        />
+      </label>
+      <button className="btn-info search-btn" onClick={handleSearch}>
+        Search
       </button>
     </div>
   );
