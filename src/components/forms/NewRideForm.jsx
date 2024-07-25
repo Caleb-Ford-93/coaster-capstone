@@ -39,7 +39,9 @@ export const NewRideForm = ({ currentUser }) => {
     if (ride.coasterId) {
       const rideCopy = { ...ride };
       rideCopy.userId = currentUser.id;
-      createNewRide(rideCopy).then(navigate("/myRides"));
+      createNewRide(rideCopy).then(() => {
+        navigate("/myRides");
+      });
     } else {
       window.alert(`Something went wrong, please try again`);
     }
@@ -169,7 +171,7 @@ export const NewRideForm = ({ currentUser }) => {
               handleSubmit(e);
             }}
           >
-            Submit
+            Create
           </button>
         </div>
       </fieldset>

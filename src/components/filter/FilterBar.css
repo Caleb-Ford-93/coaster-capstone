@@ -1,0 +1,17 @@
+.search-bar {
+  display: flex;
+  margin-left: 2rem;
+  margin-top: 2rem;
+  background-color: var(--secondary);
+  padding: 2rem;
+  max-width: fit-content;
+  border-radius: 8px;
+}
+label {
+  font-size: larger;
+  font-weight: 600;
+}
+.search-input {
+  margin: 0.5rem;
+  border-radius: 4px;
+}

@@ -29,3 +29,6 @@
 .navbar-link:hover {
   color: var(--primary);
 }
+.logo {
+  margin-left: 2rem;
+}

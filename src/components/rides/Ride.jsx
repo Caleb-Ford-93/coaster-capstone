@@ -2,14 +2,12 @@ import { useEffect, useState } from "react";
 import { getParkById } from "../../services/parkService";
 import "./Ride.css";
 import { deleteRide } from "../../services/rideService";
+import { useNavigate } from "react-router-dom";
 
-export const Ride = ({
-  ride,
-  // getAndSetCurrentUserRides,
-  currentUser,
-  getAndSetAllRides,
-}) => {
+export const Ride = ({ ride, currentUser, getAndSetAllRides }) => {
   const [rideLocation, setRideLocation] = useState({});
+
+  const navigate = useNavigate();
 
   const getAndSetRideLocation = (parkId) => {
     getParkById(parkId).then((park) => {
@@ -48,7 +46,14 @@ export const Ride = ({
         </div>
         {ride.userId === currentUser.id ? (
           <div className="ride-buttons">
-            <button className="edit-btn btn btn-info">Edit</button>
+            <button
+              className="edit-btn btn btn-info"
+              onClick={() => {
+                navigate(`/myRides/${ride.id}`);
+              }}
+            >
+              Edit
+            </button>
             <button
               className="delete-btn btn btn-warning"
               onClick={() => {

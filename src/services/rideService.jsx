@@ -23,3 +23,18 @@ export const createNewRide = (ride) => {
 export const deleteRide = (id) => {
   return fetch(`http://localhost:8088/rides/${id}`, { method: "DELETE" });
 };
+export const getRideById = (id) => {
+  return fetch(
+    `http://localhost:8088/rides?id=${id}&_expand=coaster&_expand=user`
+  ).then((res) => res.json());
+};
+
+export const updateRide = (ride) => {
+  return fetch(`http://localhost:8088/rides/${ride.id}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(ride),
+  });
+};

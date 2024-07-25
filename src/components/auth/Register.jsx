@@ -17,6 +17,7 @@ export const Register = () => {
           "coaster_user",
           JSON.stringify({
             id: createdUser.id,
+            fullName: createdUser.fullName,
           })
         );
 

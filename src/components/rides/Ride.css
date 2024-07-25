@@ -40,9 +40,7 @@
   flex-direction: column;
   justify-content: space-evenly;
 }
-.ride-name {
-  text-decoration: underline;
-}
+
 .user-name {
   align-self: flex-end;
   margin-top: 2rem;
