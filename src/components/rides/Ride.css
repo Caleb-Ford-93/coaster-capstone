@@ -12,8 +12,8 @@
   margin-top: 1rem;
   max-height: 300px;
   flex-shrink: 1;
-  box-shadow: 3px 3px var(--dark);
-  border: 0.5px solid var(--dark);
+  box-shadow: 3px 3px 5px var(--dark);
+  border: 0.5px solid (--dark);
 }
 .ride-img {
   width: 300px;
