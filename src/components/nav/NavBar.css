@@ -1,34 +1,3 @@
-.navbar {
-  display: flex;
-  flex-wrap: nowrap;
-  background-color: var(--dark);
-  margin: 0;
-  width: 100%;
-  padding: 0.5rem 0;
-}
-
-.navbar-item {
-  flex-basis: 20%;
-  list-style-type: none;
-  text-align: left;
-  color: var(--offWhite);
-}
-
-.navbar-link {
-  text-decoration: none;
-  font-family: "Quicksand", sans-serif;
-  font-size: 20px;
-  letter-spacing: 2px;
-}
-
-.navbar-logout {
-  margin-left: auto;
-  text-align: center;
-}
-
-.navbar-link:hover {
-  color: var(--primary);
-}
-.logo {
-  margin-left: 2rem;
+.nav-link {
+  color: var(--outline);
 }
