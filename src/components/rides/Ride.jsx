@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { getParkById } from "../../services/parkService";
 import "./Ride.css";
 import { deleteRide } from "../../services/rideService";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export const Ride = ({ ride, currentUser, getAndSetAllRides }) => {
   const [rideLocation, setRideLocation] = useState({});
@@ -64,7 +64,9 @@ export const Ride = ({ ride, currentUser, getAndSetAllRides }) => {
             </button>
           </div>
         ) : (
-          <div className="user-name">{ride.user.fullName}</div>
+          <div className="user-name">
+            <Link to={`/discover/${ride.user.id}`}>{ride.user.fullName}</Link>
+          </div>
         )}
       </div>
     </section>
