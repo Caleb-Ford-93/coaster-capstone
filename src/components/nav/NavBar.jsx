@@ -4,8 +4,8 @@ export const NavBar = () => {
   const navigate = useNavigate();
   return (
     <ul className="navbar">
-      <li className="navbar-item">
-        <Link to={"/"}>Logo</Link>
+      <li className="navbar-item logo">
+        <Link to={"/"}>🎢</Link>
       </li>
       <li className="navbar-item">
         <Link to={"/myRides"} className="navbar-link">

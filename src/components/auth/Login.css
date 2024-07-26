@@ -4,7 +4,7 @@
 
 .container-login > section > a {
   text-decoration: underline;
-  color: var(--secondary);
+  color: var(--offWhite);
 }
 
 .form-login {
