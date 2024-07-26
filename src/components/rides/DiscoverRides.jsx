@@ -27,8 +27,12 @@ export const DiscoverRides = ({ currentUser }) => {
     getAndSetAllRides();
   }, []);
   useEffect(() => {
-    setFilteredRides(allRides);
-  }, [allRides]);
+    const discoverRides = allRides.filter(
+      (ride) => ride.userId != currentUser.id
+    );
+    setFilteredRides(discoverRides);
+  }, [allRides, currentUser]);
+
   useEffect(() => {
     filterRidesBySearchInput(searchInput);
   }, [searchInput]);

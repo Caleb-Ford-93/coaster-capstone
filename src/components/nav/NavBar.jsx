@@ -5,7 +5,9 @@ export const NavBar = () => {
   return (
     <ul className="navbar">
       <li className="navbar-item logo">
-        <Link to={"/"}>🎢</Link>
+        <Link to={"/"} className="navbar-link">
+          Coaster Chronicle
+        </Link>
       </li>
       <li className="navbar-item">
         <Link to={"/myRides"} className="navbar-link">
