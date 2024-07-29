@@ -1,9 +1,9 @@
 import { useNavigate } from "react-router-dom";
 import "./NavBar.css";
-import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
+import Container from "react-bootstrap/Container";
 export const NavBar = ({ currentUser }) => {
   const navigate = useNavigate();
 
@@ -13,6 +13,7 @@ export const NavBar = ({ currentUser }) => {
       className="bg-body-tertiary nav-bar"
       bg="dark"
       data-bs-theme="dark"
+      sticky="top"
     >
       <Container>
         <Navbar.Brand href="/">Coaster Track</Navbar.Brand>
@@ -28,6 +29,7 @@ export const NavBar = ({ currentUser }) => {
             <NavDropdown
               title={`Signed in as ${currentUser.name}`}
               id="basic-nav-dropdown"
+              align="end"
             >
               <NavDropdown.Item href="#action/3.1">Profile</NavDropdown.Item>
               <NavDropdown.Divider />

@@ -1,13 +1,28 @@
 .welcome-splash {
-  width: 50%;
+  width: 40%;
   margin: auto;
   border: 2px solid var(--dark);
-  border-radius: 40px;
+  border-radius: 20px;
   text-align: center;
   margin-top: 5rem;
-  background-color: var(--secondary);
-  box-shadow: 4px 4px grey;
+  background-color: var(--dark);
+  box-shadow: var(--secondary) 0px 8px 20px;
+  color: white;
+  padding: 1rem;
 }
 h1 {
   font-size: 100px;
+  font-family: "Anton SC", sans-serif !important;
+}
+img {
+  height: 600px;
+  margin: auto;
+}
+.carousel {
+  max-width: 70%;
+  margin: auto;
+  margin-top: 3rem;
+}
+.carousel-caption {
+  background-color: rgb(0 0 0 / 60%);
 }

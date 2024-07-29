@@ -1,3 +1,10 @@
-.nav-link {
-  color: var(--outline);
+.nav-bar {
+  color: white;
+  font-weight: 600;
+  font-size: 1.5rem;
+}
+
+.nav-bar .nav-link {
+  margin-left: 2.5rem;
+  margin-right: 2.5rem;
 }

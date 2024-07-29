@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { RideFilterBar } from "../filter/RideFilterBar";
 import { Ride } from "./Ride";
 import { getRides } from "../../services/rideService";
+import { Container, Row } from "react-bootstrap";
 
 export const DiscoverRides = ({ currentUser }) => {
   const [allRides, setAllRides] = useState([]);
@@ -38,21 +39,23 @@ export const DiscoverRides = ({ currentUser }) => {
   }, [searchInput]);
   return (
     <>
-      <div className="filter-bar">
-        <RideFilterBar setSearchInput={setSearchInput} />
-      </div>
-      <div className="ride-container">
-        {filteredRides.map((ride) => {
-          return (
-            <Ride
-              key={ride.id}
-              currentUser={currentUser}
-              ride={ride}
-              getAndSetAllRides={getAndSetAllRides}
-            />
-          );
-        })}
-      </div>
+      <Container className="ride-container">
+        <div className="filter-bar">
+          <RideFilterBar setSearchInput={setSearchInput} />
+        </div>
+        <Row xs={1} lg={3} className="g-4">
+          {filteredRides.map((ride) => {
+            return (
+              <Ride
+                key={ride.id}
+                currentUser={currentUser}
+                ride={ride}
+                getAndSetAllRides={getAndSetAllRides}
+              />
+            );
+          })}
+        </Row>
+      </Container>
     </>
   );
 };
