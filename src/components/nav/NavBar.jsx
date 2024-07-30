@@ -20,18 +20,22 @@ export const NavBar = ({ currentUser }) => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link className="nav-link" href="myRides">
+            <Nav.Link className="nav-link" href="/myRides">
               My Rides
             </Nav.Link>
-            <Nav.Link href="discover">Discover</Nav.Link>
-            <Nav.Link href="newRide">New Ride</Nav.Link>
+            <Nav.Link className="nav-link" href="/discover">
+              Discover
+            </Nav.Link>
+            <Nav.Link className="nav-link" href="/newRide">
+              New Ride
+            </Nav.Link>
 
             <NavDropdown
               title={`Signed in as ${currentUser.name}`}
               id="basic-nav-dropdown"
               align="end"
             >
-              <NavDropdown.Item href="#action/3.1">Profile</NavDropdown.Item>
+              <NavDropdown.Item href="/myProfile">Profile</NavDropdown.Item>
               <NavDropdown.Divider />
               <NavDropdown.Item
                 href="#"
