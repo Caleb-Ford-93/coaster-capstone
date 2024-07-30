@@ -4,6 +4,7 @@ import { Ride } from "./Ride";
 import "./Ride.css";
 import { RideFilterBar } from "../filter/RideFilterBar";
 import { Container, Row } from "react-bootstrap";
+import { getParks } from "../../services/parkService";
 
 export const MyRides = ({ currentUser }) => {
   const [allRides, setAllRides] = useState([]);
@@ -14,11 +15,20 @@ export const MyRides = ({ currentUser }) => {
     getRidesByUserId(currentUser.id).then((rides) => setAllRides(rides));
   };
   const filterRidesBySearchInput = () => {
-    if (searchInput) {
+    if (searchInput.filterOpt === "coaster") {
       const searchedRides = allRides.filter((ride) =>
-        ride.coaster.name.toLowerCase().includes(searchInput)
+        ride.coaster.name.toLowerCase().includes(searchInput.searchTerm)
       );
       setFilteredRides(searchedRides);
+    } else if (searchInput.filterOpt === "park") {
+      //get parks, filter for park.name to include searchInput.searchTerm
+      const parks = getParks().then((parks) => {
+        parks.filter((park) =>
+          park.name.toLowerCase().includes(searchInput.searchTerm)
+        );
+      });
+
+      //then filter rides where ride.coaster.parkId equals found park.id
     } else {
       setFilteredRides(allRides);
     }
@@ -32,7 +42,7 @@ export const MyRides = ({ currentUser }) => {
     setFilteredRides(allRides);
   }, [allRides]);
   useEffect(() => {
-    filterRidesBySearchInput(searchInput);
+    filterRidesBySearchInput();
   }, [searchInput]);
   return (
     <>
