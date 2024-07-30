@@ -4,7 +4,7 @@ import { Register } from "./components/auth/Register";
 import { Authorized } from "./views/Authorized";
 import { ApplicationViews } from "./views/ApplicationViews";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./index.css";
+
 export const App = () => {
   return (
     <Routes>

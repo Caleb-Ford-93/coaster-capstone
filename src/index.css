@@ -15,7 +15,7 @@ font-family: "Roboto", sans-serif;
   --info: #7fb800;
   --warning: #f6511d;
   --white: #ffffff;
-  --offWhite: #f2f2f3;
+  --offWhite: #dcdcdc;
   --dark: #0c0e18;
   --outline: #c3c0c0;
   --appBackground: #425563;
@@ -54,8 +54,12 @@ a:visited {
   color: inherit;
 }
 /* This prevents all the inputs in the app from having that blue outline when in focus */
-input:focus {
-  outline: none;
+.form-control:focus {
+  box-shadow: none;
+  border: 1px solid var(--outline);
+}
+.form-control {
+  appearance: auto;
 }
 
 /* GLOBAL STYLING FOR ALL THE BUTTONS BUTTONS */

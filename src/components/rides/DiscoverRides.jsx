@@ -43,7 +43,7 @@ export const DiscoverRides = ({ currentUser }) => {
         <div className="filter-bar">
           <RideFilterBar setSearchInput={setSearchInput} />
         </div>
-        <Row xs={1} lg={3} className="g-4">
+        <Row xs={1} sm={2} lg={3} className="g-4">
           {filteredRides.map((ride) => {
             return (
               <Ride
