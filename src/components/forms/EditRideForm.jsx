@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { getRideById, updateRide } from "../../services/rideService";
 import { getParkById } from "../../services/parkService";
+import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
 
 export const EditRideForm = () => {
   const { rideId } = useParams();
@@ -61,76 +63,65 @@ export const EditRideForm = () => {
   }, [ride, rideId]);
 
   return (
-    <form>
+    <Form>
       <h3>{ride.coaster?.name}</h3>
       <h4>
         Located at {park?.name}, {park?.location}.
       </h4>
-      <fieldset>
-        <div>
-          <label>
-            Day Ride
-            <input
-              type="checkbox"
-              checked={editRide.dayRide}
-              id="dayRide"
-              onChange={(e) => {
-                handleChange(e.target.id, e.target.checked);
-              }}
-            />
-          </label>
-        </div>
-        <div>
-          <label>
-            Night Ride
-            <input
-              type="checkbox"
-              checked={editRide.nightRide}
-              id="nightRide"
-              onChange={(e) => {
-                handleChange(e.target.id, e.target.checked);
-              }}
-            />
-          </label>
-        </div>
-        <div>
-          <label>
-            Front Row
-            <input
-              type="checkbox"
-              checked={editRide.frontRow}
-              id="frontRow"
-              onChange={(e) => {
-                handleChange(e.target.id, e.target.checked);
-              }}
-            />
-          </label>
-        </div>
-        <div>
-          <label>
-            Back Row
-            <input
-              type="checkbox"
-              checked={editRide.backRow}
-              id="backRow"
-              onChange={(e) => {
-                handleChange(e.target.id, e.target.checked);
-              }}
-            />
-          </label>
-        </div>
-      </fieldset>
-      <fieldset>
-        <button
+      <Form.Group>
+        <legend>Change all that apply:</legend>
+        <Form.Check
+          type="checkbox"
+          label="Day Ride"
+          checked={editRide.dayRide}
+          id="dayRide"
+          onChange={(e) => {
+            handleChange(e.target.id, e.target.checked);
+          }}
+        />
+
+        <Form.Check
+          type="checkbox"
+          label="Night Ride"
+          checked={editRide.nightRide}
+          id="nightRide"
+          onChange={(e) => {
+            handleChange(e.target.id, e.target.checked);
+          }}
+        />
+
+        <Form.Check
+          type="checkbox"
+          label="Front Row"
+          checked={editRide.frontRow}
+          id="frontRow"
+          onChange={(e) => {
+            handleChange(e.target.id, e.target.checked);
+          }}
+        />
+
+        <Form.Check
+          type="checkbox"
+          label="Back Row"
+          checked={editRide.backRow}
+          id="backRow"
+          onChange={(e) => {
+            handleChange(e.target.id, e.target.checked);
+          }}
+        />
+      </Form.Group>
+      <Form.Group>
+        <Button
           type="submit"
-          className="btn btn-info"
+          variant="success"
+          className="btn form-btn"
           onClick={(e) => {
             handleSubmit(e);
           }}
         >
           Save Changes
-        </button>
-      </fieldset>
-    </form>
+        </Button>
+      </Form.Group>
+    </Form>
   );
 };

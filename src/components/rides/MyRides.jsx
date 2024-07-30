@@ -3,6 +3,7 @@ import { getRidesByUserId } from "../../services/rideService";
 import { Ride } from "./Ride";
 import "./Ride.css";
 import { RideFilterBar } from "../filter/RideFilterBar";
+import { Container, Row } from "react-bootstrap";
 
 export const MyRides = ({ currentUser }) => {
   const [allRides, setAllRides] = useState([]);
@@ -35,22 +36,24 @@ export const MyRides = ({ currentUser }) => {
   }, [searchInput]);
   return (
     <>
-      <div className="filter-bar">
-        <RideFilterBar setSearchInput={setSearchInput} />
-      </div>
-      <div className="ride-container">
-        {filteredRides.map((ride) => {
-          return (
-            <Ride
-              key={ride.id}
-              currentUser={currentUser}
-              ride={ride}
-              getAndSetAllRides={getAndSetCurrentUserRides}
-              searchInput={searchInput}
-            />
-          );
-        })}
-      </div>
+      <Container className="ride-container">
+        <div className="filter-bar">
+          <RideFilterBar setSearchInput={setSearchInput} />
+        </div>
+        <Row xs={1} sm={2} lg={3} className="g-4">
+          {filteredRides.map((ride) => {
+            return (
+              <Ride
+                key={ride.id}
+                currentUser={currentUser}
+                ride={ride}
+                getAndSetAllRides={getAndSetCurrentUserRides}
+                searchInput={searchInput}
+              />
+            );
+          })}
+        </Row>
+      </Container>
     </>
   );
 };

@@ -3,6 +3,8 @@ import { getParks } from "../../services/parkService";
 import { getCoasters } from "../../services/coasterService";
 import { createNewRide } from "../../services/rideService";
 import { useNavigate } from "react-router-dom";
+import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
 
 export const NewRideForm = ({ currentUser }) => {
   const [parks, setParks] = useState([]);
@@ -47,8 +49,6 @@ export const NewRideForm = ({ currentUser }) => {
     }
   };
 
-  // useEffect(() => {}, [coastersByPark]);
-
   useEffect(() => {
     getParks().then((parks) => {
       setParks(parks);
@@ -61,41 +61,37 @@ export const NewRideForm = ({ currentUser }) => {
   }, []);
 
   return (
-    <form className="new-ride-form">
-      <fieldset className="park-choice">
-        <label>
+    <Form className="new-ride-form">
+      <Form.Group className="park-choice">
+        <Form.Label>
           Theme Park:
-          <select
-            className="form-control"
-            defaultValue={"default"}
+          <Form.Select
+            size="lg"
             name="themeParkSelect"
             onChange={(e) => {
               handleParkSelection(e.target.value);
             }}
           >
-            <option value={"default"} disabled>
-              Chose a Park
-            </option>
+            <option>Chose a Park</option>
             {parks.map((park) => (
               <option key={park.id} value={park.id}>
                 {park.name}
               </option>
             ))}
-          </select>
-        </label>
-      </fieldset>
-      <fieldset className="coaster-choice">
-        <label>
+          </Form.Select>
+        </Form.Label>
+      </Form.Group>
+      <Form.Group className="coaster-choice">
+        <Form.Label>
           Coaster:
-          <select
-            className="form-control"
-            defaultValue={"default"}
+          <Form.Select
+            size="lg"
             id="coasterId"
             onChange={(e) => {
               handleChange(e.target.id, parseInt(e.target.value));
             }}
           >
-            <option value={"default"}>Chose a Coaster</option>
+            <option>Chose a Coaster</option>
             {coastersByPark.length > 0
               ? coastersByPark.map((coaster) => (
                   <option key={coaster.id} value={coaster.id}>
@@ -107,72 +103,60 @@ export const NewRideForm = ({ currentUser }) => {
                     {coaster.name}
                   </option>
                 ))}
-          </select>
-        </label>
-      </fieldset>
-      <fieldset className="ride-params">
+          </Form.Select>
+        </Form.Label>
+      </Form.Group>
+      <Form.Group className="ride-params">
         <legend>Select all that apply: </legend>
-        <div>
-          <label>
-            Day Ride
-            <input
-              type="checkbox"
-              id="dayRide"
-              onChange={(e) => {
-                handleChange(e.target.id, e.target.checked);
-              }}
-            />
-          </label>
-        </div>
-        <div>
-          <label>
-            Night Ride
-            <input
-              type="checkbox"
-              id="nightRide"
-              onChange={(e) => {
-                handleChange(e.target.id, e.target.checked);
-              }}
-            />
-          </label>
-        </div>
-        <div>
-          <label>
-            Front Row
-            <input
-              type="checkbox"
-              id="frontRow"
-              onChange={(e) => {
-                handleChange(e.target.id, e.target.checked);
-              }}
-            />
-          </label>
-        </div>
-        <div>
-          <label>
-            Back Row
-            <input
-              type="checkbox"
-              id="backRow"
-              onChange={(e) => {
-                handleChange(e.target.id, e.target.checked);
-              }}
-            />
-          </label>
-        </div>
-      </fieldset>
-      <fieldset className="submit-button">
-        <div>
-          <button
-            className="btn btn-info"
-            onClick={(e) => {
-              handleSubmit(e);
-            }}
-          >
-            Create
-          </button>
-        </div>
-      </fieldset>
-    </form>
+
+        <Form.Check
+          type="checkbox"
+          id="dayRide"
+          label="Day Ride"
+          onChange={(e) => {
+            handleChange(e.target.id, e.target.checked);
+          }}
+        />
+
+        <Form.Check
+          type="checkbox"
+          id="nightRide"
+          label="Night Ride"
+          onChange={(e) => {
+            handleChange(e.target.id, e.target.checked);
+          }}
+        />
+
+        <Form.Check
+          type="checkbox"
+          id="frontRow"
+          label="Front Row"
+          onChange={(e) => {
+            handleChange(e.target.id, e.target.checked);
+          }}
+        />
+
+        <Form.Check
+          type="checkbox"
+          id="backRow"
+          label="Back Row"
+          onChange={(e) => {
+            handleChange(e.target.id, e.target.checked);
+          }}
+        />
+      </Form.Group>
+      <Form.Group className="submit-button">
+        <Button
+          type="submit"
+          className="btn form-btn"
+          variant="success"
+          onClick={(e) => {
+            handleSubmit(e);
+          }}
+        >
+          Create
+        </Button>
+      </Form.Group>
+    </Form>
   );
 };

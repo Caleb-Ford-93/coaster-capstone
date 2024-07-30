@@ -28,6 +28,7 @@
 
 .login-btn {
   align-self: flex-end;
+  margin-bottom: 1rem;
 }
 
 .login-btn:focus {
@@ -43,7 +44,7 @@ form {
   border: 1px solid var(--outline);
   border-radius: 10px;
   padding: 1rem 0rem 0rem 1rem;
-  box-shadow: 1px 2px 5px lightgray;
+  box-shadow: 2px 4px 5px var(--secondary);
   background-color: var(--offWhite);
 }
 
@@ -60,6 +61,7 @@ fieldset {
   font-size: 1rem;
   border: 1px solid var(--outline);
   border-radius: 0.25rem;
+  margin-bottom: 1rem;
 }
 
 .form-group {
@@ -70,6 +72,7 @@ fieldset {
 
 .form-btn {
   align-self: flex-end;
+  margin-bottom: 1rem;
 }
 
 .form-btn:focus {
