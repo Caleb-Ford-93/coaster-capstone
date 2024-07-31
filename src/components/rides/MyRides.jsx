@@ -10,9 +10,15 @@ export const MyRides = ({ currentUser }) => {
   const [allRides, setAllRides] = useState([]);
   const [filteredRides, setFilteredRides] = useState([]);
   const [searchInput, setSearchInput] = useState("");
+  const [allParks, setAllParks] = useState([]);
 
   const getAndSetCurrentUserRides = () => {
     getRidesByUserId(currentUser.id).then((rides) => setAllRides(rides));
+  };
+  const getAndSetAllParks = () => {
+    getParks().then((parks) => {
+      setAllParks(parks);
+    });
   };
   const filterRidesBySearchInput = () => {
     if (searchInput.filterOpt === "coaster") {
@@ -21,18 +27,23 @@ export const MyRides = ({ currentUser }) => {
       );
       setFilteredRides(searchedRides);
     } else if (searchInput.filterOpt === "park") {
-      //get parks, filter for park.name to include searchInput.searchTerm
-      const parks = getParks().then((parks) => {
-        parks.filter((park) =>
-          park.name.toLowerCase().includes(searchInput.searchTerm)
-        );
+      const searchedParks = allParks.filter((park) =>
+        park.name.toLowerCase().includes(searchInput.searchTerm)
+      );
+      const searchedRides = allRides.filter((ride) => {
+        return searchedParks.find((park) => {
+          return park.id === ride.coaster.parkId;
+        });
       });
-
-      //then filter rides where ride.coaster.parkId equals found park.id
+      setFilteredRides(searchedRides);
     } else {
       setFilteredRides(allRides);
     }
   };
+
+  useEffect(() => {
+    getAndSetAllParks();
+  }, []);
 
   useEffect(() => {
     getAndSetCurrentUserRides();

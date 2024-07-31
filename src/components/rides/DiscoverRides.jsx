@@ -3,35 +3,57 @@ import { RideFilterBar } from "../filter/RideFilterBar";
 import { Ride } from "./Ride";
 import { getRides } from "../../services/rideService";
 import { Container, Row } from "react-bootstrap";
+import { getParks } from "../../services/parkService";
 
 export const DiscoverRides = ({ currentUser }) => {
   const [allRides, setAllRides] = useState([]);
+  const [discoverRides, setDiscoverRides] = useState([]);
   const [filteredRides, setFilteredRides] = useState([]);
   const [searchInput, setSearchInput] = useState("");
+  const [allParks, setAllParks] = useState([]);
 
   const getAndSetAllRides = () => {
     getRides().then((rides) => {
       setAllRides(rides);
     });
   };
+  const getAndSetAllParks = () => {
+    getParks().then((parks) => {
+      setAllParks(parks);
+    });
+  };
   const filterRidesBySearchInput = () => {
-    if (searchInput) {
-      const searchedRides = allRides.filter((ride) =>
-        ride.coaster.name.toLowerCase().includes(searchInput)
+    if (searchInput.filterOpt === "coaster") {
+      const searchedRides = discoverRides.filter((ride) =>
+        ride.coaster.name.toLowerCase().includes(searchInput.searchTerm)
       );
       setFilteredRides(searchedRides);
+    } else if (searchInput.filterOpt === "park") {
+      const searchedParks = allParks.filter((park) =>
+        park.name.toLowerCase().includes(searchInput.searchTerm)
+      );
+      const searchedRides = discoverRides.filter((ride) => {
+        return searchedParks.find((park) => {
+          return park.id === ride.coaster.parkId;
+        });
+      });
+      setFilteredRides(searchedRides);
     } else {
-      setFilteredRides(allRides);
+      setFilteredRides(discoverRides);
     }
   };
+  useEffect(() => {
+    getAndSetAllParks();
+  }, []);
   useEffect(() => {
     getAndSetAllRides();
   }, []);
   useEffect(() => {
-    const discoverRides = allRides.filter(
+    const otherUserRides = allRides.filter(
       (ride) => ride.userId != currentUser.id
     );
-    setFilteredRides(discoverRides);
+    setDiscoverRides(otherUserRides);
+    setFilteredRides(otherUserRides);
   }, [allRides, currentUser]);
 
   useEffect(() => {

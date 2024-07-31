@@ -16,6 +16,10 @@ export const RideFilterBar = ({ setSearchInput }) => {
   const handleClick = (e) => {
     setFilterOpt(e);
   };
+  const handleClearSearch = () => {
+    const searchObj = {};
+    setSearchInput(searchObj);
+  };
 
   return (
     <div className="search-bar">
@@ -53,8 +57,15 @@ export const RideFilterBar = ({ setSearchInput }) => {
         }}
       />
 
-      <Button variant="success" onClick={handleSearch}>
+      <Button className="search-btn" variant="success" onClick={handleSearch}>
         Search
+      </Button>
+      <Button
+        className="search-btn"
+        variant="success"
+        onClick={handleClearSearch}
+      >
+        Show All
       </Button>
     </div>
   );
