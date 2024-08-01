@@ -16,6 +16,7 @@ export const NewRideForm = ({ currentUser }) => {
     frontRow: false,
     backRow: false,
     coasterId: 0,
+    lastRode: new Date(),
   });
 
   const navigate = useNavigate();

@@ -13,7 +13,12 @@ export const MyRides = ({ currentUser }) => {
   const [allParks, setAllParks] = useState([]);
 
   const getAndSetCurrentUserRides = () => {
-    getRidesByUserId(currentUser.id).then((rides) => setAllRides(rides));
+    getRidesByUserId(currentUser.id).then((rides) => {
+      const sortedRides = rides.sort(
+        (a, b) => new Date(b.lastRode) - new Date(a.lastRode)
+      );
+      setAllRides(sortedRides);
+    });
   };
   const getAndSetAllParks = () => {
     getParks().then((parks) => {

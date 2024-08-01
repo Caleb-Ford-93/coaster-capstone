@@ -57,6 +57,7 @@ export const EditRideForm = () => {
         backRow: ride.backRow,
         coasterId: ride.coasterId,
         userId: ride.userId,
+        lastRode: new Date(),
       };
       setEditRide(rideToEdit);
     }

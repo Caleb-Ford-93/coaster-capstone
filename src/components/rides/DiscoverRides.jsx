@@ -14,7 +14,10 @@ export const DiscoverRides = ({ currentUser }) => {
 
   const getAndSetAllRides = () => {
     getRides().then((rides) => {
-      setAllRides(rides);
+      const sortedRides = rides.sort(
+        (a, b) => new Date(b.lastRode) - new Date(a.lastRode)
+      );
+      setAllRides(sortedRides);
     });
   };
   const getAndSetAllParks = () => {
