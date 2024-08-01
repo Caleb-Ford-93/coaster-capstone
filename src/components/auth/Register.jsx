@@ -78,6 +78,18 @@ export const Register = () => {
         </fieldset>
         <fieldset>
           <div className="form-group">
+            <input
+              onChange={updateCustomer}
+              type="text"
+              id="favCoaster"
+              className="form-control"
+              placeholder="Enter your favorite coaster"
+              required
+            />
+          </div>
+        </fieldset>
+        <fieldset>
+          <div className="form-group">
             <Button variant="success" className="login-btn" type="submit">
               Register
             </Button>

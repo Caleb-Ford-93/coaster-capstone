@@ -8,6 +8,7 @@ import { DiscoverRides } from "../components/rides/DiscoverRides";
 import { EditRideForm } from "../components/forms/EditRideForm";
 import { MyProfile } from "../components/users/MyProfile";
 import { UserProfile } from "../components/users/UserProfile";
+import { EditProfileForm } from "../components/forms/EditProfileForm";
 export const ApplicationViews = () => {
   const [currentUser, setCurrentUser] = useState("");
 
@@ -45,6 +46,10 @@ export const ApplicationViews = () => {
         <Route
           path="myProfile"
           element={<MyProfile currentUser={currentUser} />}
+        />
+        <Route
+          path="editProfile"
+          element={<EditProfileForm currentUser={currentUser} />}
         />
       </Route>
     </Routes>
