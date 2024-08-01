@@ -94,7 +94,7 @@ export const Ride = ({ ride, currentUser, getAndSetAllRides }) => {
           </Card.Footer>
         ) : (
           <div className="user-name">
-            <Button variant="secondary" href={`/discover/${ride.user.id}`}>
+            <Button variant="link" href={`/discover/${ride.user.id}`}>
               {ride.user.fullName}
             </Button>
           </div>

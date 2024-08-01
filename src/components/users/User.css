@@ -1,0 +1,8 @@
+.profile-container {
+  background-color: var(--dark);
+  border-radius: 20px;
+  max-width: 60% !important;
+  margin-top: 2rem;
+  color: white;
+  padding: 2rem;
+}
