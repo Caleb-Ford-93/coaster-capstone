@@ -3,9 +3,10 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import "./Login.css";
 import { getUserByEmail } from "../../services/userService";
+import Button from "react-bootstrap/Button";
 
 export const Login = () => {
-  const [email, set] = useState("caleb.ford.sto@gmail.com");
+  const [email, set] = useState("caleb.ford@coastertrack.com");
   const navigate = useNavigate();
 
   const handleLogin = (e) => {
@@ -18,7 +19,7 @@ export const Login = () => {
           "coaster_user",
           JSON.stringify({
             id: user.id,
-            name: user.fullName,
+            fullName: user.fullName,
           })
         );
 
@@ -50,9 +51,9 @@ export const Login = () => {
           </fieldset>
           <fieldset>
             <div className="form-group">
-              <button className="login-btn btn-info" type="submit">
+              <Button variant="success" className="login-btn" type="submit">
                 Sign in
-              </button>
+              </Button>
             </div>
           </fieldset>
         </form>

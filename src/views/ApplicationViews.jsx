@@ -6,7 +6,8 @@ import { useEffect, useState } from "react";
 import { NewRideForm } from "../components/forms/NewRideForm";
 import { DiscoverRides } from "../components/rides/DiscoverRides";
 import { EditRideForm } from "../components/forms/EditRideForm";
-
+import { MyProfile } from "../components/users/MyProfile";
+import { UserProfile } from "../components/users/UserProfile";
 export const ApplicationViews = () => {
   const [currentUser, setCurrentUser] = useState("");
 
@@ -32,14 +33,18 @@ export const ApplicationViews = () => {
           <Route index element={<MyRides currentUser={currentUser} />} />
           <Route path=":rideId" element={<EditRideForm />} />
         </Route>
+        <Route path="discover">
+          <Route index element={<DiscoverRides currentUser={currentUser} />} />
+          <Route path=":userId" element={<UserProfile />} />
+        </Route>
 
-        <Route
-          path="discover"
-          element={<DiscoverRides currentUser={currentUser} />}
-        />
         <Route
           path="newRide"
           element={<NewRideForm currentUser={currentUser} />}
+        />
+        <Route
+          path="myProfile"
+          element={<MyProfile currentUser={currentUser} />}
         />
       </Route>
     </Routes>

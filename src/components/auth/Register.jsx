@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Login.css";
 import { createUser, getUserByEmail } from "../../services/userService";
+import Button from "react-bootstrap/Button";
 
 export const Register = () => {
   const [customer, setCustomer] = useState({
@@ -77,9 +78,9 @@ export const Register = () => {
         </fieldset>
         <fieldset>
           <div className="form-group">
-            <button className="login-btn btn-info" type="submit">
+            <Button variant="success" className="login-btn" type="submit">
               Register
-            </button>
+            </Button>
           </div>
         </fieldset>
       </form>

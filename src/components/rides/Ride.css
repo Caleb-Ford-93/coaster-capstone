@@ -23,3 +23,6 @@
 .ride-name {
   text-decoration: double;
 }
+.btn-link {
+  color: inherit;
+}

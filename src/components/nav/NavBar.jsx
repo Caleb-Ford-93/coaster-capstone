@@ -31,7 +31,7 @@ export const NavBar = ({ currentUser }) => {
             </Nav.Link>
 
             <NavDropdown
-              title={`Signed in as ${currentUser.name}`}
+              title={`Signed in as ${currentUser.fullName}`}
               id="basic-nav-dropdown"
               align="end"
             >
