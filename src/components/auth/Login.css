@@ -80,3 +80,13 @@ fieldset {
   outline: 2px solid transparent;
   outline-offset: 2px;
 }
+
+.form {
+  max-width: 60%;
+  margin: auto;
+  margin-top: 3rem;
+  padding: 2rem;
+}
+.profile-input {
+  width: 25em;
+}

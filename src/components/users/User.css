@@ -6,3 +6,12 @@
   color: white;
   padding: 2rem;
 }
+.myProfile {
+  display: flex;
+  flex-direction: column;
+}
+.profile-btn {
+  margin-top: 1rem;
+  align-self: center;
+  width: fit-content;
+}

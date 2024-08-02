@@ -14,7 +14,7 @@ export const NewsCarousel = () => {
       <Carousel.Item interval={10000}>
         <Image
           className="d-block w-100"
-          src="https://i.imgur.com/Qoa3n76.jpg"
+          src="../src/images/universal-epic-universe.jpg"
         />
         <Carousel.Caption>
           <h3>Epic Universe Construction</h3>
@@ -24,7 +24,7 @@ export const NewsCarousel = () => {
       <Carousel.Item>
         <Image
           className="d-block w-100"
-          src="https://i.imgur.com/lwL8D70.jpg"
+          src="../src/images/fullTopThrill2.jpg"
         />
         <Carousel.Caption>
           <h3>Top Thrill 2 Is Still Down</h3>
@@ -34,7 +34,7 @@ export const NewsCarousel = () => {
       <Carousel.Item>
         <Image
           className="d-block w-100"
-          src="https://i.imgur.com/x2RDm9L.png"
+          src="../src/images/loch-ness-monster-3.png"
         />
         <Carousel.Caption>
           <h3>Loch Ness Monster Reopens!</h3>

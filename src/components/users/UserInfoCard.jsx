@@ -6,7 +6,7 @@ export const UserInfoCard = ({ user, setUserStats, userStats }) => {
   const [coasterRides, setCoasterRides] = useState([]);
   const [uniqueParks, setUniqueParks] = useState(0);
   const getAndSetNumberOfCoasters = () => {
-    getRidesByUserId(user.id).then((rides) => {
+    getRidesByUserId(user?.id).then((rides) => {
       setCoasterRides(rides);
     });
   };
@@ -35,7 +35,8 @@ export const UserInfoCard = ({ user, setUserStats, userStats }) => {
   return (
     <Container className="profile-container">
       <Container className="user-info">
-        <h2>Name: {user.fullName}</h2>
+        <h2>Name: {user?.fullName}</h2>
+        <h2>Favorite Coaster: {user?.favCoaster}</h2>
       </Container>
       <Container className="user-stats">
         <h1>Stats</h1>
