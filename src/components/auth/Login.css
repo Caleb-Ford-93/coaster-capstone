@@ -9,7 +9,7 @@
 
 .form-login {
   width: 60%;
-  margin: 2rem auto;
+  margin: 4rem auto;
 }
 
 .form-login > h1 {
@@ -84,7 +84,7 @@ fieldset {
 .form {
   max-width: 60%;
   margin: auto;
-  margin-top: 3rem;
+  margin-top: 4rem;
   padding: 2rem;
 }
 .profile-input {

@@ -3,7 +3,7 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { getUserById, updateUser } from "../../services/userService";
 import { useNavigate } from "react-router-dom";
-
+import "./Forms.css";
 export const EditProfileForm = ({ currentUser }) => {
   const [user, setUser] = useState({});
   const [editUser, setEditUser] = useState({});
