@@ -62,7 +62,7 @@ export const NewRideForm = ({ currentUser }) => {
   }, []);
 
   return (
-    <Form className="new-ride-form">
+    <Form className="form">
       <Form.Group className="park-choice">
         <Form.Label>
           Theme Park:

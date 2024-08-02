@@ -64,7 +64,7 @@ export const EditRideForm = () => {
   }, [ride, rideId]);
 
   return (
-    <Form>
+    <Form className="form">
       <h3>{ride.coaster?.name}</h3>
       <h4>
         Located at {park?.name}, {park?.location}.
