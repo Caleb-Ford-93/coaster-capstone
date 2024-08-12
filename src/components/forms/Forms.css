@@ -1,0 +1,9 @@
+.form {
+  max-width: 60%;
+  margin: auto;
+  margin-top: 3rem;
+  padding: 2rem;
+}
+.profile-input {
+  width: 25em;
+}

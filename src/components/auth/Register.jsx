@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Login.css";
 import { createUser, getUserByEmail } from "../../services/userService";
+import Button from "react-bootstrap/Button";
 
 export const Register = () => {
   const [customer, setCustomer] = useState({
@@ -48,7 +49,7 @@ export const Register = () => {
   return (
     <main style={{ textAlign: "center" }}>
       <form className="form-login" onSubmit={handleRegister}>
-        <h1>Coaster Chronicle</h1>
+        <h1>Coaster Track</h1>
         <h2>Please Register</h2>
         <fieldset>
           <div className="form-group">
@@ -77,9 +78,21 @@ export const Register = () => {
         </fieldset>
         <fieldset>
           <div className="form-group">
-            <button className="login-btn btn-info" type="submit">
+            <input
+              onChange={updateCustomer}
+              type="text"
+              id="favCoaster"
+              className="form-control"
+              placeholder="Enter your favorite coaster"
+              required
+            />
+          </div>
+        </fieldset>
+        <fieldset>
+          <div className="form-group">
+            <Button variant="success" className="login-btn" type="submit">
               Register
-            </button>
+            </Button>
           </div>
         </fieldset>
       </form>

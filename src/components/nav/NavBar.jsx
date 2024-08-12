@@ -1,43 +1,55 @@
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./NavBar.css";
-export const NavBar = () => {
+import Nav from "react-bootstrap/Nav";
+import Navbar from "react-bootstrap/Navbar";
+import NavDropdown from "react-bootstrap/NavDropdown";
+import Container from "react-bootstrap/Container";
+export const NavBar = ({ currentUser }) => {
   const navigate = useNavigate();
+
   return (
-    <ul className="navbar">
-      <li className="navbar-item logo">
-        <Link to={"/"}>🎢</Link>
-      </li>
-      <li className="navbar-item">
-        <Link to={"/myRides"} className="navbar-link">
-          My Rides
-        </Link>
-      </li>
-      <li className="navbar-item">
-        <Link to={"/discover"} className="navbar-link">
-          Discover
-        </Link>
-      </li>
-      <li className="navbar-item">
-        <Link to={"/newRide"} className="navbar-link">
-          New Ride
-        </Link>
-      </li>
-      {localStorage.getItem("coaster_user") ? (
-        <li className="navbar-item navbar-logout">
-          <Link
-            className="navbar-link"
-            to=""
-            onClick={() => {
-              localStorage.removeItem("coaster_user");
-              navigate("/", { replace: true });
-            }}
-          >
-            Logout
-          </Link>
-        </li>
-      ) : (
-        ""
-      )}
-    </ul>
+    <Navbar
+      expand="lg"
+      className="bg-body-tertiary nav-bar"
+      bg="dark"
+      data-bs-theme="dark"
+      sticky="top"
+    >
+      <Container>
+        <Navbar.Brand href="/">Coaster Track</Navbar.Brand>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className="me-auto">
+            <Nav.Link className="nav-link" href="/myRides">
+              My Rides
+            </Nav.Link>
+            <Nav.Link className="nav-link" href="/discover">
+              Discover
+            </Nav.Link>
+            <Nav.Link className="nav-link" href="/newRide">
+              New Ride
+            </Nav.Link>
+
+            <NavDropdown
+              title={`Signed in as ${currentUser.fullName}`}
+              id="basic-nav-dropdown"
+              align="end"
+            >
+              <NavDropdown.Item href="/myProfile">Profile</NavDropdown.Item>
+              <NavDropdown.Divider />
+              <NavDropdown.Item
+                href="#"
+                onClick={() => {
+                  localStorage.removeItem("coaster_user");
+                  navigate("/", { replace: true });
+                }}
+              >
+                Log Out
+              </NavDropdown.Item>
+            </NavDropdown>
+          </Nav>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
   );
 };

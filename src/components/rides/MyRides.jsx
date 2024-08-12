@@ -3,25 +3,52 @@ import { getRidesByUserId } from "../../services/rideService";
 import { Ride } from "./Ride";
 import "./Ride.css";
 import { RideFilterBar } from "../filter/RideFilterBar";
+import { Container, Row } from "react-bootstrap";
+import { getParks } from "../../services/parkService";
 
 export const MyRides = ({ currentUser }) => {
   const [allRides, setAllRides] = useState([]);
   const [filteredRides, setFilteredRides] = useState([]);
   const [searchInput, setSearchInput] = useState("");
+  const [allParks, setAllParks] = useState([]);
 
   const getAndSetCurrentUserRides = () => {
-    getRidesByUserId(currentUser.id).then((rides) => setAllRides(rides));
+    getRidesByUserId(currentUser.id).then((rides) => {
+      const sortedRides = rides.sort(
+        (a, b) => new Date(b.lastRode) - new Date(a.lastRode)
+      );
+      setAllRides(sortedRides);
+    });
+  };
+  const getAndSetAllParks = () => {
+    getParks().then((parks) => {
+      setAllParks(parks);
+    });
   };
   const filterRidesBySearchInput = () => {
-    if (searchInput) {
+    if (searchInput.filterOpt === "coaster") {
       const searchedRides = allRides.filter((ride) =>
-        ride.coaster.name.toLowerCase().includes(searchInput)
+        ride.coaster.name.toLowerCase().includes(searchInput.searchTerm)
       );
+      setFilteredRides(searchedRides);
+    } else if (searchInput.filterOpt === "park") {
+      const searchedParks = allParks.filter((park) =>
+        park.name.toLowerCase().includes(searchInput.searchTerm)
+      );
+      const searchedRides = allRides.filter((ride) => {
+        return searchedParks.find((park) => {
+          return park.id === ride.coaster.parkId;
+        });
+      });
       setFilteredRides(searchedRides);
     } else {
       setFilteredRides(allRides);
     }
   };
+
+  useEffect(() => {
+    getAndSetAllParks();
+  }, []);
 
   useEffect(() => {
     getAndSetCurrentUserRides();
@@ -31,26 +58,28 @@ export const MyRides = ({ currentUser }) => {
     setFilteredRides(allRides);
   }, [allRides]);
   useEffect(() => {
-    filterRidesBySearchInput(searchInput);
+    filterRidesBySearchInput();
   }, [searchInput]);
   return (
     <>
-      <div className="filter-bar">
-        <RideFilterBar setSearchInput={setSearchInput} />
-      </div>
-      <div className="ride-container">
-        {filteredRides.map((ride) => {
-          return (
-            <Ride
-              key={ride.id}
-              currentUser={currentUser}
-              ride={ride}
-              getAndSetAllRides={getAndSetCurrentUserRides}
-              searchInput={searchInput}
-            />
-          );
-        })}
-      </div>
+      <Container className="ride-container">
+        <div className="filter-bar">
+          <RideFilterBar setSearchInput={setSearchInput} />
+        </div>
+        <Row xs={1} sm={2} lg={3} className="g-4">
+          {filteredRides.map((ride) => {
+            return (
+              <Ride
+                key={ride.id}
+                currentUser={currentUser}
+                ride={ride}
+                getAndSetAllRides={getAndSetCurrentUserRides}
+                searchInput={searchInput}
+              />
+            );
+          })}
+        </Row>
+      </Container>
     </>
   );
 };

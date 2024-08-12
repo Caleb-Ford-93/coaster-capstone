@@ -1,5 +1,5 @@
 /* Import the google web fonts you want to use */
-@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@300&family=Quicksand&family=Roboto:wght@100&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@300&family=Quicksand&family=Rubik+Mono+One&family=Anton+SC&family=Roboto:wght@100&display=swap");
 
 /* FONTS
 font-family: "Nunito", sans-serif;
@@ -15,8 +15,8 @@ font-family: "Roboto", sans-serif;
   --info: #7fb800;
   --warning: #f6511d;
   --white: #ffffff;
-  --offWhite: #f2f2f3;
-  --dark: #0c0e18;
+  --offWhite: #dcdcdc;
+  --dark: #212529;
   --outline: #c3c0c0;
   --appBackground: #425563;
 }
@@ -41,7 +41,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Roboto", serif;
+  font-family: "Roboto", sans-serif;
 }
 
 /* This prevents all the links in the app from having default underline */
@@ -54,22 +54,26 @@ a:visited {
   color: inherit;
 }
 /* This prevents all the inputs in the app from having that blue outline when in focus */
-input:focus {
-  outline: none;
+.form-control:focus {
+  box-shadow: none;
+  border: 1px solid var(--outline);
+}
+.form-control {
+  appearance: auto;
 }
 
 /* GLOBAL STYLING FOR ALL THE BUTTONS BUTTONS */
-button {
+/* button {
   padding: 0.5rem 1rem;
   border: 1px solid transparent;
   border-radius: 0.5rem;
   color: var(--white);
   cursor: pointer;
-}
+} */
 
 /* These are all the color options for the buttons */
 /* If you change the color variables, be sure to change the hover colors to be a darker shade of the colors you chose*/
-.btn-primary {
+/* .btn-primary {
   background-color: var(--primary);
 }
 
@@ -99,4 +103,4 @@ button {
 
 .btn-info:hover {
   background-color: #71a500;
-}
+} */

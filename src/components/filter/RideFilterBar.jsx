@@ -1,29 +1,72 @@
 import { useState } from "react";
 import "./FilterBar.css";
+import Button from "react-bootstrap/Button";
+// import Form from "react-bootstrap/Form";
+import Dropdown from "react-bootstrap/Dropdown";
 export const RideFilterBar = ({ setSearchInput }) => {
   const [searchTerm, setSearchTerm] = useState("");
-
+  const [filterOpt, setFilterOpt] = useState("");
   const handleSearch = () => {
-    setSearchInput(searchTerm.toLowerCase());
+    const searchObj = {
+      filterOpt: filterOpt,
+      searchTerm: searchTerm.toLowerCase(),
+    };
+    setSearchInput(searchObj);
+  };
+  const handleClick = (e) => {
+    setFilterOpt(e);
+  };
+  const handleClearSearch = () => {
+    const searchObj = {};
+    setSearchInput(searchObj);
   };
 
   return (
     <div className="search-bar">
-      <label>
-        Search Rides:
-        <input
-          type="search"
-          className="search-input"
-          placeholder="Search by Coaster"
-          id="searchInput"
-          onChange={(e) => {
-            setSearchTerm(e.target.value);
-          }}
-        />
-      </label>
-      <button className="btn-info search-btn" onClick={handleSearch}>
+      <Dropdown>
+        <Dropdown.Toggle variant="success" id="dropdown-basic">
+          {`Filter by ${filterOpt}`}
+        </Dropdown.Toggle>
+
+        <Dropdown.Menu>
+          <Dropdown.Item
+            id="park"
+            onClick={(e) => {
+              handleClick(e.target.id);
+            }}
+          >
+            Filter by park
+          </Dropdown.Item>
+          <Dropdown.Item
+            id="coaster"
+            onClick={(e) => {
+              handleClick(e.target.id);
+            }}
+          >
+            Filter by coaster
+          </Dropdown.Item>
+        </Dropdown.Menu>
+      </Dropdown>
+      <input
+        type="search"
+        className="search-input"
+        placeholder={`Enter ${filterOpt} name`}
+        id="searchInput"
+        onChange={(e) => {
+          setSearchTerm(e.target.value);
+        }}
+      />
+
+      <Button className="search-btn" variant="success" onClick={handleSearch}>
         Search
-      </button>
+      </Button>
+      <Button
+        className="search-btn"
+        variant="success"
+        onClick={handleClearSearch}
+      >
+        Show All
+      </Button>
     </div>
   );
 };

@@ -2,10 +2,11 @@
   display: flex;
   margin-left: 2rem;
   margin-top: 2rem;
-  background-color: var(--secondary);
+  background-color: rgba(var(--bs-dark-rgb));
   padding: 2rem;
   max-width: fit-content;
   border-radius: 8px;
+  color: white;
 }
 label {
   font-size: larger;
@@ -14,4 +15,7 @@ label {
 .search-input {
   margin: 0.5rem;
   border-radius: 4px;
+}
+.search-btn {
+  margin-right: 1rem;
 }
