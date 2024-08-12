@@ -10,13 +10,13 @@ export const NewRideForm = ({ currentUser }) => {
   const [parks, setParks] = useState([]);
   const [coasters, setCoasters] = useState([]);
   const [coastersByPark, setCoastersByPark] = useState([]);
+  const [createMultiple, setCreateMultiple] = useState(false);
   const [ride, setRide] = useState({
     dayRide: false,
     nightRide: false,
     frontRow: false,
     backRow: false,
     coasterId: 0,
-    lastRode: new Date(),
   });
 
   const navigate = useNavigate();
@@ -37,14 +37,31 @@ export const NewRideForm = ({ currentUser }) => {
     setRide(rideCopy);
   };
 
+  const switchCreateMultiple = (bool) => {
+    setCreateMultiple(bool);
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (ride.coasterId) {
       const rideCopy = { ...ride };
       rideCopy.userId = currentUser.id;
-      createNewRide(rideCopy).then(() => {
-        navigate("/myRides");
-      });
+      (rideCopy.lastRode = new Date()),
+        createNewRide(rideCopy).then(() => {
+          if (!createMultiple) {
+            navigate("/myRides");
+          } else {
+            e.target.reset();
+            switchCreateMultiple(false);
+            setRide({
+              dayRide: false,
+              nightRide: false,
+              frontRow: false,
+              backRow: false,
+              coasterId: 0,
+            });
+          }
+        });
     } else {
       window.alert(`Something went wrong, please try again`);
     }
@@ -62,7 +79,7 @@ export const NewRideForm = ({ currentUser }) => {
   }, []);
 
   return (
-    <Form className="form">
+    <Form className="form" onSubmit={handleSubmit}>
       <Form.Group className="park-choice">
         <Form.Label>
           Theme Park:
@@ -114,6 +131,7 @@ export const NewRideForm = ({ currentUser }) => {
           type="checkbox"
           id="dayRide"
           label="Day Ride"
+          checked={ride.dayRide}
           onChange={(e) => {
             handleChange(e.target.id, e.target.checked);
           }}
@@ -123,6 +141,7 @@ export const NewRideForm = ({ currentUser }) => {
           type="checkbox"
           id="nightRide"
           label="Night Ride"
+          checked={ride.nightRide}
           onChange={(e) => {
             handleChange(e.target.id, e.target.checked);
           }}
@@ -132,6 +151,7 @@ export const NewRideForm = ({ currentUser }) => {
           type="checkbox"
           id="frontRow"
           label="Front Row"
+          checked={ride.frontRow}
           onChange={(e) => {
             handleChange(e.target.id, e.target.checked);
           }}
@@ -141,22 +161,25 @@ export const NewRideForm = ({ currentUser }) => {
           type="checkbox"
           id="backRow"
           label="Back Row"
+          checked={ride.backRow}
           onChange={(e) => {
             handleChange(e.target.id, e.target.checked);
           }}
         />
       </Form.Group>
       <Form.Group className="submit-button">
-        <Button
-          type="submit"
-          className="btn form-btn"
-          variant="success"
-          onClick={(e) => {
-            handleSubmit(e);
-          }}
-        >
+        <Button type="submit" className="btn form-btn" variant="success">
           Create
         </Button>
+        <Form.Check
+          type="switch"
+          id="create-multiple"
+          label="Create Another Ride"
+          checked={createMultiple}
+          onChange={(e) => {
+            switchCreateMultiple(e.target.checked);
+          }}
+        />
       </Form.Group>
     </Form>
   );
